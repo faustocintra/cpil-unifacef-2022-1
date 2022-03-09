@@ -2,8 +2,8 @@ let source =
     `read a
     read b
     read c
-    result := (a + b) * c
-    write result, result * .5`
+    result := (a+b)*c
+    write result * .5`
 
 
 // Caracteres em branco

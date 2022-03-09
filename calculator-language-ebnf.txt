@@ -1,0 +1,14 @@
+<letter> ::= a | b ... | z | A | B ... | Z
+<digit> ::= 0 | 1 ... | 9
+<keyword> ::= read | write
+<assign> ::= ':='
+<plus> ::= +
+<minus> ::= -
+<times> ::= *
+<div> ::= /
+<lparen> ::= (
+<rparen> ::= )
+<number> ::= <digit> {<digit>} | {<digit>} (.<digit> | <digit>.) {<digit>} ;; BNF
+<number> ::= <digit>+ | <digit>* (.<digit> | <digit>.) <digit>* ;; EBNF
+<identifier> ::= <letter> {<letter> | <digit>}  ;; BNF
+<identifier> ::= <letter> (<letter> | <digit>)* ;; EBNF
