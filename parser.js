@@ -58,16 +58,19 @@ function match(exp) {
 
 // Funções que representam cada um dos símbolos não terminais
 function E() {
+    console.log(`-> Rule E, current token: ${currToken}`)
     T()
     Y()
 }
 
 function T() {
+    console.log(`-> Rule T, current token: ${currToken}`)
     F()
     Z()
 }
 
 function Y() {
+    console.log(`-> Rule Y, current token: ${currToken}`)
     if(currToken === tokens.PLUS) {
         match(tokens.PLUS)
         E()
@@ -75,6 +78,7 @@ function Y() {
 }
 
 function Z() {
+    console.log(`-> Rule Z, current token: ${currToken}`)
     if(currToken === tokens.TIMES) {
         match(tokens.TIMES)
         T()
@@ -82,6 +86,7 @@ function Z() {
 }
 
 function F() {
+    console.log(`-> Rule F, current token: ${currToken}`)
     switch(currToken) {
         case tokens.LPAREN:
             match(tokens.LPAREN)
@@ -97,3 +102,20 @@ function F() {
             console.error('ERROR: "(" or "id" expected.')
     }
 }
+
+// Função que inicializa o parser
+function parse() {
+
+    // Captura o primeiro token
+    nextToken()
+
+    // Chama o símbolo inicial
+    E()
+
+    // currToken será undefined quando acabarem todos os tokens de input
+    if(currToken === undefined) console.log('*** EXPRESSION ACCEPTED ***')
+    else console.error('!!! Expression rejected !!!')
+}
+
+// Chama a função do parser
+parse()
